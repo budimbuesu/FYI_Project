@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2016 8:51:52 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Salarie" table="SALARIE" schema="FYI">
+        <id name="salarieId" type="big_decimal">
+            <column name="SALARIE_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="NOM" length="30" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="PRENOM" length="30" />
+        </property>
+        <property name="poste" type="string">
+            <column name="POSTE" length="30" />
+        </property>
+        <property name="dateEntree" type="date">
+            <column name="DATE_ENTREE" length="7" />
+        </property>
+        <property name="dateSortie" type="date">
+            <column name="DATE_SORTIE" length="7" />
+        </property>
+        <set name="cras" table="CRA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SALARIE_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="model.Cra" />
+        </set>
+    </class>
+</hibernate-mapping>

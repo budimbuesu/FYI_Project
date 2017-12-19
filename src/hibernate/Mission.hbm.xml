@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2016 8:51:52 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Mission" table="MISSION" schema="FYI">
+        <id name="missionId" type="big_decimal">
+            <column name="MISSION_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="NOM" length="20" />
+        </property>
+        <property name="periode" type="big_decimal">
+            <column name="PERIODE" precision="22" scale="0" />
+        </property>
+        <set name="cras" table="CRA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MISSION_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="model.Cra" />
+        </set>
+    </class>
+</hibernate-mapping>
